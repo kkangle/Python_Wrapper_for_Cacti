@@ -1,7 +1,6 @@
 import subprocess
 import linecache
 import re
-import panda as pd
 import matplotlib.pyplot as plt
 
 # open change file and get parametes 
@@ -39,7 +38,7 @@ def get_result(para_name, para_list, var_num):
     # loop through all the parameter and call
     # main method every time, then write to a file
     for data in para_list[0:len(para_list)]:
-        finter = open('inter', 'w')
+        finter = open('inter.cfg', 'w')
         fcleanup = open('cleanup', 'r')
         foutput = open('output', 'w')
         for line_in_cleanup in fcleanup:
@@ -53,7 +52,7 @@ def get_result(para_name, para_list, var_num):
     
         fcleanup.close()
         finter.close()
-        foutput.write(subprocess.check_output(['./cacti', '-infile', 'inter']))
+        foutput.write(subprocess.check_output(['./cacti', '-infile', 'inter.cfg']))
         foutput.close()
 
         # get the specific result that we want
